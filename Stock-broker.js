@@ -60,3 +60,10 @@ function balanceStatements(list){
 }
 
 // or
+
+const balanceStatements=(l,t=([d,e,f,g])=>/\./.test(f)&&!!g)=>{
+  const arr = l.split`, `.map(a=>a.split` `).map(a=>[t(a),...a]); 
+  const [b,s] = arr.reduce(([a,b],[c,d,e,f,g])=>c?g=='B'?[a+(e*f),b]:[a,b+(e*f)]:[a,b],[0,0]);
+  const badly = arr.filter(a=>!a[0]).map(([a,...b])=>b); 
+  return `Buy: ${Math.round(b)} Sell: ${Math.round(s)}${badly.length&&l?`; Badly formed ${badly.length}: ${badly.map(a=>[...a,';'].join` `).join``}`:''}`
+}
