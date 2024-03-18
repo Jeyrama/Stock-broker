@@ -58,3 +58,5 @@ function balanceStatements(list){
          (bad.length === 0 ? '' :
          '; Badly formed ' + bad.length + ': ' + bad.join(' ;') + ' ;');
 }
+
+// or
